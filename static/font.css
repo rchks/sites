@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Concetta Kalvani Signaature';
+    src: url('Concetta.ttf');
+}
+
+@font-face {
+    font-family: 'Page normal';
+    src: url('/static/11053.ttf');
+}
+
+@font-face {
+    font-family: 'Page header';
+    src: url('/static/Gabriola.ttf');
+}
