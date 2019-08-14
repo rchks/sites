@@ -1,0 +1,94 @@
+
+{%load static%}
+{%load easy_maps_tags%}
+{% load easy_maps_tags cache %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap-flex.min.css" rel="stylesheet" />
+    <link href="/static/bootstrap.css" rel="stylesheet" type="text/css"  />
+    <link href="/static/bootstrap.min.css" rel="stylesheet" type="text/css"  />
+    <link href="/static/main.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/static/Article.css" type="text/css" />
+
+{% block title %}<title>Open Krasnoyarsk</title>{% endblock %}
+</head>
+<style>
+    #map{
+        width: 1200px;
+    }
+</style>
+<body style="background-color: #ffffff; border: 100px solid #d1d1d3">
+{% block page %}
+  {% block content %}
+
+  <header>
+    <div class="container" >
+        <div class="row" style="background: linear-gradient(to right, #f9f9f9 65%, #dde8ea 35%)">
+            <div class="col-md-8">
+                <h1 style="font-family: 'Page normal'; font-size: 56px; margin-bottom: 35px; padding-top: 10px" align="center">
+                    <a style=" color: black; text-decoration: none" href="/tag/{{tag.0.id}}">{{tag.0.Title}}</a></h1>
+            </div>
+            <div class="col-md-1" >
+                <img src="/static/site/navigation/Русский.png" alt="Ru_lang">
+            </div>
+            <div class="col-md-1">
+                <img src="/static/site/navigation/English.png" alt="Eng_Lang">
+            </div>
+            <div class="col-md-1">
+                <a href="/"><img src="/static/site/navigation/Главная.png" alt="Man"></a>
+            </div>
+            <div class="col-md-1">
+                <img src="/static/OK.png" alt="OK">
+            </div>
+        </div>
+    </div>
+  </header>
+{%for post in posts%}
+    {%if forloop.counter|divisibleby:2 %}
+<div class="container" >
+    <div class="row">
+        <div class="col-md-9" style="padding-right: 0px; padding-top:35px;">
+            <img style="width: 90%; float: right;"  src="{{ MEDIA_URL }}{{post.Picture.url}}">
+
+        </div>
+        <div class="col-md-3" style="padding-left: 0px;padding-right: 0px; ">
+            <div  style="position: absolute;width: 100%; background-color: #eee1e0;padding-top: 0px;">
+                <h3  style="font-family: 'Page normal'; font-size: 40px; padding-top: 20%; margin-left: 35px; margin-right: 30px;" align="justify">
+                    <a style=" color: black; text-decoration: none" href="/article/{{ post.id }}">{{ post.Title }}</a></h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container" >
+    <div class="row" style="flex-direction: row-reverse">
+        <div class="col-md-9" style="padding-left: 0px; padding-top: 35px; ">
+            <img style="width: 90%; float: left;"  src="{{ MEDIA_URL }}{{post.Picture.url}}">
+        </div>
+        <div class="col-md-3" style="padding-right: 0px;padding-left: 0px;">
+            <div  style="position: absolute;width: 100%; background-color: #dde8ea;padding-top: 0px;">
+                <h3  style="font-family: 'Page normal'; font-size: 40px; padding-top: 20%; margin-left: 35px; margin-right: 30px;" align="justify">
+                    <a style=" color: black; text-decoration: none" href="/article/{{ post.id }}">{{ post.Title }}</a></h3>
+            </div>
+        </div>
+    </div>
+</div>
+{%endif %}
+{%endfor%}
+
+<div class="container" style="padding-bottom:50px">
+        <div class="row" >
+            <div class="col-md-4" style="padding-left: 40%">
+                 <a  href="/"><img src="/static/site/navigation/choice.png" alt="Choice"></a>
+            </div>
+        </div>
+</div>
+
+  {% endblock %}
+{% endblock %}
+</body>
+</html>
